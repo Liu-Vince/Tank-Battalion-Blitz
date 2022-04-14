@@ -3,6 +3,8 @@
  * @version 1.0
  */
 public class Tank {
+    private boolean isLive = true;
+
     private int x,y;
     //坦克的横纵坐标
 
@@ -33,7 +35,13 @@ public class Tank {
     }
 
 
+    public boolean isLive() {
+        return isLive;
+    }
 
+    public void setLive(boolean live) {
+        isLive = live;
+    }
 
     public int getDirect() {
         return direct;

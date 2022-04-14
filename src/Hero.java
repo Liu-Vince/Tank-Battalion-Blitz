@@ -6,10 +6,18 @@ import java.util.Vector;
  */
 public class Hero extends Tank {
 
-    Shot shot = null;
+    private Shot shot = null;
 
     //发射多个子弹
-    Vector<Shot> shots = new Vector<>();
+    private Vector<Shot> shots = new Vector<>();
+
+    public Vector<Shot> getShots() {
+        return shots;
+    }
+
+    public void setShots(Vector<Shot> shots) {
+        this.shots = shots;
+    }
 
     public Hero(int x, int y) {
         super(x, y);

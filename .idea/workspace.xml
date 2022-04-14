@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="83ccb537-6d3c-4c05-9447-f24601667ce9" name="Changes" comment="" />
+    <list default="true" id="83ccb537-6d3c-4c05-9447-f24601667ce9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankBattle/EnemyTank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TankBattle/EnemyTank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankBattle/EnemyTankFire.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TankBattle/EnemyTankFire.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankBattle/Hero.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TankBattle/Hero.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankBattle/MyPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TankBattle/MyPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TankBattle/Tank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TankBattle/Tank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EnemyTank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EnemyTank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tank.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,10 +25,14 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="27mWwHXeOlMqqe6341ELxqYDROP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -63,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1649925981308</updated>
-      <workItem from="1649925982653" duration="8669000" />
+      <workItem from="1649925982653" duration="11134000" />
     </task>
     <servers />
   </component>

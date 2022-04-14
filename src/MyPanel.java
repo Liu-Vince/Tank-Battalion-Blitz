@@ -23,7 +23,7 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
 
 
     //敌坦克数量
-    int enemyTankSize =5;
+    int enemyTankSize = 5;
 
     //定义三张炸弹图片，用于显示爆炸效果
     Image image1 = null;
@@ -32,7 +32,7 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
 
 
     public MyPanel() {
-        hero = new Hero(100, 100);
+        hero = new Hero(800, 600);
         //初始化一个坦克
 
         //hero.setSpeed(10);
@@ -64,8 +64,6 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     }
 
 
-
-
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -73,18 +71,19 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
         g.fillRect(0, 0, 1000, 750);
 
 
-        //画出坦克-封装方法
-        drawTank(hero.getX(), hero.getY(), g, hero.getDirect(), 0);
-
+        if (hero != null && hero.isLive()) {
+            //画出己方坦克-封装方法
+            drawTank(hero.getX(), hero.getY(), g, hero.getDirect(), 0);
+        }
 
         //画出hero子弹
-        for (int i = 0; i < hero.shots.size(); i++) {
-            Shot shot = hero.shots.get(i);
+        for (int i = 0; i < hero.getShots().size(); i++) {
+            Shot shot = hero.getShots().get(i);
             if (shot != null && shot.isLive()) {
                 //g.fill3DRect(hero.shot.getX(), hero.shot.getY(), 1, 1, false);
                 g.draw3DRect(shot.getX(), shot.getY(), 2, 2, false);
             } else {
-                hero.shots.remove(shot);
+                hero.getShots().remove(shot);
             }
         }
 
@@ -241,8 +240,8 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     //都取出和敌人的所有坦克进行判断
 
     public void hitEnemyTank() {
-        for (int j = 0; j < hero.shots.size(); j++) {
-            Shot shot = hero.shots.get(j);
+        for (int j = 0; j < hero.getShots().size(); j++) {
+            Shot shot = hero.getShots().get(j);
             //判断是否击中了敌人坦克
             if (shot != null && shot.isLive()) {
                 //遍历敌人所有的坦克
@@ -255,8 +254,26 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
         }
     }
 
+    //判断敌人是否击中我方坦克
+    public void hitHero() {
+        //遍历所有敌人的坦克
+        for (int i = 0; i < enemyTanks.size(); i++) {
+            EnemyTank enemyTank = enemyTanks.get(i);
+            //遍历坦克子弹
+            for (int j = 0; j < enemyTank.getShots().size(); j++) {
+                Shot shot = enemyTank.getShots().get(j);
+                //判断shot是否击中我的坦克
+                if (hero.isLive() && shot.isLive()) {
+                    hitTank(shot, hero);
+                }
+
+            }
+        }
+    }
+
+
     //判断我方的子弹是否击中敌人坦克
-    public void hitTank(Shot s, EnemyTank enemyTank) {
+    public void hitTank(Shot s, Tank enemyTank) {
         switch (enemyTank.getDirect()) {
             case 0:
             case 2:
@@ -301,8 +318,10 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            //判断是否击中敌人坦克
             hitEnemyTank();
-
+            //判断是否击中己方坦克
+            hitHero();
             this.repaint();
 
         }

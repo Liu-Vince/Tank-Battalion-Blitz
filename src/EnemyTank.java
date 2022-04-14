@@ -5,19 +5,14 @@ import java.util.Vector;
  * @version 1.0
  */
 public class EnemyTank extends Tank implements Runnable {
-    Shot shot = null;
+    private Shot shot = null;
 
     private Vector<Shot> shots = new Vector<>();
 
     private boolean isLive = true;
 
-    public boolean isLive() {
-        return isLive;
-    }
 
-    public void setLive(boolean live) {
-        isLive = live;
-    }
+
 
     public Vector<Shot> getShots() {
         return shots;
