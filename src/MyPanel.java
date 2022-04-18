@@ -58,6 +58,8 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
 
 
         }
+        //存盘
+        Recorder.setEnemyTanks(enemyTanks);
 
         //初始化图片对象
         image1 = Toolkit.getDefaultToolkit().getImage(Panel.class.getResource("/bomb_1.gif"));
@@ -66,11 +68,28 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     }
 
 
+    //编写方法，显示我方击毁地方坦克的信息
+    public void showInfo(Graphics g) {
+        //画出玩家的总成绩
+        g.setColor(Color.BLACK);
+        Font font = new Font("宋体", Font.BOLD, 25);
+        g.setFont(font);
+        g.drawString("您累计击毁敌方坦克", 1020, 30);
+        //画出一个地方坦克
+        drawTank(1020, 60, g, 0, 0);
+        g.setColor(Color.BLACK);
+        g.drawString(Recorder.getAllEnemyTankNum() + "", 1080, 100);
+    }
+
+
     @Override
     public void paint(Graphics g) {
         super.paint(g);
         //填充矩形默认黑色
         g.fillRect(0, 0, 1000, 750);
+
+
+        showInfo(g);
 
 
         if (hero != null && hero.isLive()) {
@@ -205,26 +224,172 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
 
     }
 
+
+    public boolean isTouchEnemyTank() {
+
+        //判断当前敌人坦克的方向
+        switch (hero.getDirect()) {
+            case 0:
+                for (int i = 0; i < enemyTanks.size(); i++) {
+                    EnemyTank enemyTank = enemyTanks.get(i);
+                    if (enemyTank.getDirect() == 0 || enemyTank.getDirect() == 2) {
+                        if (hero.getX() >= enemyTank.getX()
+                                && hero.getX() <= enemyTank.getX() + 40
+                                && hero.getY() >= enemyTank.getY()
+                                && hero.getY() <= enemyTank.getY() + 60) {
+                            return true;
+                        }
+                        if (hero.getX() + 40 >= enemyTank.getX()
+                                && hero.getX() + 40 <= enemyTank.getX() + 40
+                                && hero.getY() >= enemyTank.getY()
+                                && hero.getY() <= enemyTank.getY() + 60) {
+                            return true;
+                        }
+
+                    } else if (enemyTank.getDirect() == 1 || enemyTank.getDirect() == 3) {
+                        if (hero.getX() >= enemyTank.getX() - 10
+                                && hero.getX() <= enemyTank.getX() + 50
+                                && hero.getY() >= enemyTank.getY() + 10
+                                && hero.getY() <= enemyTank.getY() + 50) {
+                            return true;
+                        }
+                        if (hero.getX() + 40 >= enemyTank.getX() - 10
+                                && hero.getX() + 40 <= enemyTank.getX() + 50
+                                && hero.getY() >= enemyTank.getY() + 10
+                                && hero.getY() <= enemyTank.getY() + 50) {
+                            return true;
+                        }
+                    }
+                }
+                break;
+            case 1:
+                for (int i = 0; i < enemyTanks.size(); i++) {
+                    EnemyTank enemyTank = enemyTanks.get(i);
+
+                    if (enemyTank.getDirect() == 0 || enemyTank.getDirect() == 2) {
+                        if (hero.getX() + 50 >= enemyTank.getX()
+                                && hero.getX() + 50 <= enemyTank.getX() + 40
+                                && hero.getY() + 10 >= enemyTank.getY()
+                                && hero.getY() + 10 <= enemyTank.getY() + 60) {
+                            return true;
+                        }
+                        if (hero.getX() + 50 >= enemyTank.getX()
+                                && hero.getX() + 50 <= enemyTank.getX() + 40
+                                && hero.getY() + 50 >= enemyTank.getY()
+                                && hero.getY() + 50 <= enemyTank.getY() + 60) {
+                            return true;
+                        }
+
+                    } else if (enemyTank.getDirect() == 1 || enemyTank.getDirect() == 3) {
+                        if (hero.getX() + 50 >= enemyTank.getX() - 10
+                                && hero.getX() + 50 <= enemyTank.getX() + 50
+                                && hero.getY() + 10 >= enemyTank.getY() + 10
+                                && hero.getY() + 10 <= enemyTank.getY() + 50) {
+                            return true;
+                        }
+                        if (hero.getX() + 50 >= enemyTank.getX() - 10
+                                && hero.getX() + 50 <= enemyTank.getX() + 50
+                                && hero.getY() + 50 >= enemyTank.getY() + 10
+                                && hero.getY() + 50 <= enemyTank.getY() + 50) {
+                            return true;
+                        }
+
+                    }
+                }
+                break;
+            case 2:
+                for (int i = 0; i < enemyTanks.size(); i++) {
+                    EnemyTank enemyTank = enemyTanks.get(i);
+                    if (enemyTank.getDirect() == 0 || enemyTank.getDirect() == 2) {
+                        if (hero.getX() >= enemyTank.getX()
+                                && hero.getX() <= enemyTank.getX() + 40
+                                && hero.getY() + 60 >= enemyTank.getY()
+                                && hero.getY() + 60 <= enemyTank.getY() + 60) {
+                            return true;
+                        }
+                        if (hero.getX() + 40 >= enemyTank.getX()
+                                && hero.getX() + 40 <= enemyTank.getX() + 40
+                                && hero.getY() + 60 >= enemyTank.getY()
+                                && hero.getY() + 60 <= enemyTank.getY() + 60) {
+                            return true;
+                        }
+
+                    } else if (enemyTank.getDirect() == 1 || enemyTank.getDirect() == 3) {
+                        if (hero.getX() >= enemyTank.getX() - 10
+                                && hero.getX() <= enemyTank.getX() + 50
+                                && hero.getY() + 60 >= enemyTank.getY() + 10
+                                && hero.getY() + 60 <= enemyTank.getY() + 50) {
+                            return true;
+                        }
+                        if (hero.getX() + 40 >= enemyTank.getX() - 10
+                                && hero.getX() + 40 <= enemyTank.getX() + 50
+                                && hero.getY() + 60 >= enemyTank.getY() + 10
+                                && hero.getY() + 60 <= enemyTank.getY() + 50) {
+                            return true;
+                        }
+
+                    }
+                }
+                break;
+            case 3:
+                for (int i = 0; i < enemyTanks.size(); i++) {
+                    EnemyTank enemyTank = enemyTanks.get(i);
+                    if (enemyTank.getDirect() == 0 || enemyTank.getDirect() == 2) {
+                        if (hero.getX() - 10 >= enemyTank.getX()
+                                && hero.getX() - 10 <= enemyTank.getX() + 40
+                                && hero.getY() + 10 >= enemyTank.getY()
+                                && hero.getY() + 10 <= enemyTank.getY() + 60) {
+                            return true;
+                        }
+                        if (hero.getX() - 10 >= enemyTank.getX()
+                                && hero.getX() - 10 <= enemyTank.getX() + 40
+                                && hero.getY() + 50 >= enemyTank.getY()
+                                && hero.getY() + 50 <= enemyTank.getY() + 60) {
+                            return true;
+                        }
+
+                    } else if (enemyTank.getDirect() == 1 || enemyTank.getDirect() == 3) {
+                        if (hero.getX() - 10 >= enemyTank.getX() - 10
+                                && hero.getX() - 10 <= enemyTank.getX() + 50
+                                && hero.getY() + 10 >= enemyTank.getY() + 10
+                                && hero.getY() + 10 <= enemyTank.getY() + 50) {
+                            return true;
+                        }
+                        if (hero.getX() - 10 >= enemyTank.getX() - 10
+                                && hero.getX() - 10 <= enemyTank.getX() + 50
+                                && hero.getY() + 50 >= enemyTank.getY() + 10
+                                && hero.getY() + 50 <= enemyTank.getY() + 50) {
+                            return true;
+                        }
+
+                    }
+                }
+                break;
+            default:
+        }
+        return false;
+    }
+
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_W) {
             hero.setDirect(0);
-            if (hero.getY() > 0) {
+            if (hero.getY() > 0 && !isTouchEnemyTank()) {
                 hero.moveUp();
             }
         } else if (e.getKeyCode() == KeyEvent.VK_D) {
             hero.setDirect(1);
-            if (hero.getX() - 10 + 60 < 1000) {
+            if (hero.getX() - 10 + 60 < 1000 && !isTouchEnemyTank()) {
                 hero.moveRight();
             }
         } else if (e.getKeyCode() == KeyEvent.VK_S) {
             hero.setDirect(2);
-            if (hero.getY() + 60 < 750) {
+            if (hero.getY() + 60 < 750 && !isTouchEnemyTank()) {
                 hero.moveDown();
             }
         } else if (e.getKeyCode() == KeyEvent.VK_A) {
             hero.setDirect(3);
-            if (hero.getX() - 10 > 0) {
+            if (hero.getX() - 10 > 0 && !isTouchEnemyTank()) {
                 hero.moveLeft();
             }
         }
@@ -284,6 +449,9 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
                     s.setLive(false);
                     enemyTank.setLive(false);
                     enemyTanks.remove(enemyTank);
+                    if (enemyTank instanceof EnemyTank) {
+                        Recorder.addAllEnemyTankNum();
+                    }
 
                     //创建Bomb对象，加入到bombs集合
                     Bomb bomb = new Bomb(enemyTank.getX(), enemyTank.getY());
@@ -297,6 +465,11 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
                     s.setLive(false);
                     enemyTank.setLive(false);
                     enemyTanks.remove(enemyTank);
+
+                    if (enemyTank instanceof EnemyTank) {
+                        Recorder.addAllEnemyTankNum();
+                    }
+
                     Bomb bomb = new Bomb(enemyTank.getX() - 10, enemyTank.getY() + 10);
                     bombs.add(bomb);
                 }

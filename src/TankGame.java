@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * @author 刘文长
@@ -15,10 +17,18 @@ public class TankGame extends JFrame {
         new Thread(mp).start();
         this.add(mp);
         //游戏的绘图区域
-        this.setSize(1015,795);
+        this.setSize(1300,795);
         this.addKeyListener(mp);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
+        //增加响应监听关闭窗口
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Recorder.keepRecord();
+                System.exit(0);
+            }
+        });
     }
 }
