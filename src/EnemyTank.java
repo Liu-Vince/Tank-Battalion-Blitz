@@ -19,6 +19,7 @@ public class EnemyTank extends Tank implements Runnable {
         this.enemyTanks = enemyTanks;
     }
 
+
     //判断当前敌人坦克，是否和enemyTanks的其他坦克发生碰撞
     public boolean isTouchEnemyTank() {
 
@@ -58,6 +59,34 @@ public class EnemyTank extends Tank implements Runnable {
                         }
                     }
                 }
+                if (hero.getDirect() == 0 || hero.getDirect() == 2) {
+                    if (this.getX() >= hero.getX()
+                            && this.getX() <= hero.getX() + 40
+                            && this.getY() >= hero.getY()
+                            && this.getY() <= hero.getY() + 60) {
+                        return true;
+                    }
+                    if (this.getX() +40>= hero.getX()
+                            && this.getX() +40<= hero.getX() + 40
+                            && this.getY() >= hero.getY()
+                            && this.getY() <= hero.getY() + 60) {
+                        return true;
+                    }
+
+                } else if (hero.getDirect() == 1 || hero.getDirect() == 3) {
+                    if (this.getX() >= hero.getX() -10
+                            && this.getX() <= hero.getX() + 50
+                            && this.getY() >= hero.getY() +10
+                            && this.getY() <= hero.getY() + 50) {
+                        return true;
+                    }
+                    if (this.getX() +40>= hero.getX() - 10
+                            && this.getX() +40<= hero.getX() + 50
+                            && this.getY() >= hero.getY() +10
+                            && this.getY() <= hero.getY() + 50) {
+                        return true;
+                    }
+                }
                 break;
             case 1:
                 for (int i = 0; i < enemyTanks.size(); i++) {
@@ -91,6 +120,34 @@ public class EnemyTank extends Tank implements Runnable {
                                 return true;
                             }
                         }
+                    }
+                }
+                if (hero.getDirect() == 0 || hero.getDirect() == 2) {
+                    if (this.getX() + 50>= hero.getX()
+                            && this.getX() +50<= hero.getX() + 40
+                            && this.getY() +10>= hero.getY()
+                            && this.getY() +10<= hero.getY() + 60) {
+                        return true;
+                    }
+                    if (this.getX() +50>= hero.getX()
+                            && this.getX() +50<= hero.getX() + 40
+                            && this.getY() +50>= hero.getY()
+                            && this.getY() +50<= hero.getY() + 60) {
+                        return true;
+                    }
+
+                } else if (hero.getDirect() == 1 || hero.getDirect() == 3) {
+                    if (this.getX() + 50>= hero.getX() - 10
+                            && this.getX() +50<= hero.getX() + 50
+                            && this.getY() +10>= hero.getY() + 10
+                            && this.getY() +10<= hero.getY() + 50) {
+                        return true;
+                    }
+                    if (this.getX() +50>= hero.getX() - 10
+                            && this.getX() +50<= hero.getX() + 50
+                            && this.getY() +50>= hero.getY() + 10
+                            && this.getY() +50<= hero.getY() + 50) {
+                        return true;
                     }
                 }
                 break;
@@ -128,6 +185,34 @@ public class EnemyTank extends Tank implements Runnable {
                         }
                     }
                 }
+                if (hero.getDirect() == 0 || hero.getDirect() == 2) {
+                    if (this.getX() >= hero.getX()
+                            && this.getX() <= hero.getX() + 40
+                            && this.getY() +60>= hero.getY()
+                            && this.getY() +60<= hero.getY() + 60) {
+                        return true;
+                    }
+                    if (this.getX() +40>= hero.getX()
+                            && this.getX() +40<= hero.getX() + 40
+                            && this.getY() +60>= hero.getY()
+                            && this.getY() +60<= hero.getY() + 60) {
+                        return true;
+                    }
+
+                } else if (hero.getDirect() == 1 || hero.getDirect() == 3) {
+                    if (this.getX() >= hero.getX() -10
+                            && this.getX() <= hero.getX() + 50
+                            && this.getY() +60>= hero.getY() +10
+                            && this.getY() +60<= hero.getY() + 50) {
+                        return true;
+                    }
+                    if (this.getX() +40>= hero.getX() - 10
+                            && this.getX() +40<= hero.getX() + 50
+                            && this.getY() +60>= hero.getY() +10
+                            && this.getY() +60<= hero.getY() + 50) {
+                        return true;
+                    }
+                }
                 break;
             case 3:
                 for (int i = 0; i < enemyTanks.size(); i++) {
@@ -163,6 +248,34 @@ public class EnemyTank extends Tank implements Runnable {
                         }
                     }
                 }
+                if (hero.getDirect() == 0 || hero.getDirect() == 2) {
+                    if (this.getX() - 10>= hero.getX()
+                            && this.getX() -10<= hero.getX() + 40
+                            && this.getY() +10>= hero.getY()
+                            && this.getY() +10<= hero.getY() + 60) {
+                        return true;
+                    }
+                    if (this.getX() -10>= hero.getX()
+                            && this.getX() -10<= hero.getX() + 40
+                            && this.getY() +50>= hero.getY()
+                            && this.getY() +50<= hero.getY() + 60) {
+                        return true;
+                    }
+
+                } else if (hero.getDirect() == 1 || hero.getDirect() == 3) {
+                    if (this.getX() - 10>= hero.getX() - 10
+                            && this.getX() -10<= hero.getX() + 50
+                            && this.getY() +10>= hero.getY() + 10
+                            && this.getY() +10<= hero.getY() + 50) {
+                        return true;
+                    }
+                    if (this.getX() -10>= hero.getX() - 10
+                            && this.getX() -10<= hero.getX() + 50
+                            && this.getY() +50>= hero.getY() + 10
+                            && this.getY() +50<= hero.getY() + 50) {
+                        return true;
+                    }
+                }
                 break;
             default:
         }
@@ -178,12 +291,17 @@ public class EnemyTank extends Tank implements Runnable {
         this.shots = shots;
     }
 
+    //传入己方坦克，实现防重叠
+    Hero hero = null;
     public EnemyTank(int x, int y) {
         super(x, y);
         //开火
         new Thread(new EnemyTankFire(shots, this)).start();
     }
 
+    public void setHero(Hero hero) {
+        this.hero = hero;
+    }
     //Thread thread = new Thread();
     //EnemyTankFire enemyTankFire =new EnemyTankFire(isLive(),shots,getX(),getY(),getDirect())
 
