@@ -41,14 +41,16 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
 
 
         boolean loop = true;
+        if(!Recorder.isExists()){
+            key = "1";
+            System.out.println("您没有存档，现在开始新游戏");
+        }else {
+            nodes = Recorder.getNodesAndEnemyTankRec();
+        }
         //读盘
-        nodes = Recorder.getNodesAndEnemyTankRec();
         while (loop) {
             //第一局游戏
-            if(!Recorder.isExists()){
-                key = "1";
-                System.out.println("您没有存档，现在开始新游戏");
-            }
+
             switch (key) {
                 case "1":
                     //初始化敌人坦克
@@ -115,6 +117,8 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
         image1 = Toolkit.getDefaultToolkit().getImage(Panel.class.getResource("/bomb_1.gif"));
         image2 = Toolkit.getDefaultToolkit().getImage(Panel.class.getResource("/bomb_2.gif"));
         image3 = Toolkit.getDefaultToolkit().getImage(Panel.class.getResource("/bomb_3.gif"));
+        //播放开场音乐
+        new AePlayWave("src\\111.wav").start();
     }
 
 

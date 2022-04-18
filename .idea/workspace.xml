@@ -8,14 +8,11 @@
   <component name="ChangeListManager">
     <list default="true" id="83ccb537-6d3c-4c05-9447-f24601667ce9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/TankBattle_jar/TankBattle.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TankBattle/MyPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TankBattle/MyPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TankBattle/Recorder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TankBattle/Recorder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TankBattle/TankGame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TankBattle/TankGame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TankBattle/TankGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TankBattle/TankGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TankBattle/myRecord.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TankBattle/myRecord.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Recorder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Recorder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TankGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TankGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/myRecord.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRecord.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +54,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -103,6 +100,8 @@
       <workItem from="1650259233019" duration="1628000" />
       <workItem from="1650260968358" duration="3578000" />
       <workItem from="1650264598055" duration="386000" />
+      <workItem from="1650265089776" duration="1488000" />
+      <workItem from="1650266684510" duration="317000" />
     </task>
     <servers />
   </component>
