@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Scanner;
 
 /**
  * @author 刘文长
@@ -8,11 +9,14 @@ import java.awt.event.WindowEvent;
  */
 public class TankGame extends JFrame {
     MyPanel mp= null;
+
+    static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        TankGame hspTankGame01 = new TankGame();
+        TankGame tankGame = new TankGame();
     }
     public TankGame(){
-        mp = new MyPanel();
+        System.out.println("请输入选择 1：重新开始，2：继续游戏");
+        mp = new MyPanel(scanner.next());
         //讲mp放入到Thread并启动
         new Thread(mp).start();
         this.add(mp);

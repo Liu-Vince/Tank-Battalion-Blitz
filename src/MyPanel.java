@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.ResultSet;
+import java.util.Scanner;
 import java.util.Vector;
 
 /**
@@ -21,6 +23,8 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     //当子弹击中坦克时，加入一个Bomb对象到bombs
     Vector<Bomb> bombs = new Vector<>();
 
+    //定义一个存放Node对象的Vector，用于恢复敌人坦克的位置。
+    Vector<Node> nodes = new Vector<>();
 
     //敌坦克数量
     int enemyTankSize = 5;
@@ -31,34 +35,79 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     Image image3 = null;
 
 
-    public MyPanel() {
+    public MyPanel(String key) {
         hero = new Hero(800, 600);
         //初始化一个坦克
 
-        //hero.setSpeed(10);
+
+        boolean loop = true;
+        //读盘
+        nodes = Recorder.getNodesAndEnemyTankRec();
+        while (loop) {
+            //第一局游戏
+            if(!Recorder.isExists()){
+                key = "1";
+                System.out.println("您没有存档，现在开始新游戏");
+            }
+            switch (key) {
+                case "1":
+                    //初始化敌人坦克
+                    for (int i = 0; i < enemyTankSize; i++) {
+
+                        EnemyTank enemyTank = new EnemyTank((100 * (i + 1)), 0);
+                        enemyTank.setHero(hero);
+                        //将enemyTanks 赋给每个enemyTank
+                        enemyTank.setEnemyTanks(enemyTanks);
+                        //设置方向
+                        enemyTank.setDirect(2);
+                        //启动敌人坦克引擎，动起来
+                        new Thread(enemyTank).start();
+                        //给该enemyTank 加入一个子弹
+                        //Shot shot = new Shot(enemyTank.getX() + 20, enemyTank.getY() + 60, enemyTank.getDirect());
+                        //enemyTank.getShots().add(shot);
+                        //启动shot 对象
+                        //new Thread(shot).start();
+
+                        enemyTanks.add(enemyTank);
 
 
-        //初始化敌人坦克
-        for (int i = 0; i < enemyTankSize; i++) {
+                    }
+                    loop = false;
 
-            EnemyTank enemyTank = new EnemyTank((100 * (i + 1)), 0);
-            enemyTank.setHero(hero);
-            //将enemyTanks 赋给每个enemyTank
-            enemyTank.setEnemyTanks(enemyTanks);
-            //设置方向
-            enemyTank.setDirect(2);
-            //启动敌人坦克引擎，动起来
-            new Thread(enemyTank).start();
-            //给该enemyTank 加入一个子弹
-            //Shot shot = new Shot(enemyTank.getX() + 20, enemyTank.getY() + 60, enemyTank.getDirect());
-            //enemyTank.getShots().add(shot);
-            //启动shot 对象
-            //new Thread(shot).start();
+                    break;
+                case "2":
+                    //继续上局游戏
+                    //初始化敌人坦克
+                    for (int i = 0; i < nodes.size(); i++) {
 
-            enemyTanks.add(enemyTank);
+                        Node node = nodes.get(i);
+                        EnemyTank enemyTank = new EnemyTank(node.getX(), node.getY());
+                        enemyTank.setHero(hero);
+                        //将enemyTanks 赋给每个enemyTank
+                        enemyTank.setEnemyTanks(enemyTanks);
+                        //设置方向
+                        enemyTank.setDirect(node.getDirect());
+                        //启动敌人坦克引擎，动起来
+                        new Thread(enemyTank).start();
+                        //给该enemyTank 加入一个子弹
+                        //Shot shot = new Shot(enemyTank.getX() + 20, enemyTank.getY() + 60, enemyTank.getDirect());
+                        //enemyTank.getShots().add(shot);
+                        //启动shot 对象
+                        //new Thread(shot).start();
 
+                        enemyTanks.add(enemyTank);
 
+                    }
+                    loop = false;
+                    break;
+                default:
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.println("无效的指令，请重新输入");
+                    key = scanner.next();
+            }
         }
+
+
         //存盘
         Recorder.setEnemyTanks(enemyTanks);
 
